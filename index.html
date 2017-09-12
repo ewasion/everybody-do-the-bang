@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>EVERYBODY DO THE !BANG</title>
+    <script src="bangs.min.js"></script>
+    <style>::placeholder{text-align:center;}</style>
+  </head>
+  <body>
+    <input type="text" id="search" placeholder="Google" onkeydown="javascript:doTheBang(event,this.value);" onkeyup="javascript:doTheBang(event,this.value);">
+    <input type="submit" onclick="javascript:doTheBang(event,document.getElementById(&quot;search&quot;).value);" value="Submit">
+    <p>Try "!ptp" or "!yt everybody do the flop"</p>
+    <a href="#" onclick="javascript:bangList();" id="listtoggle">List of available bangs</a>
+    <noscript>This only works with JS enabled, sorry.</noscript>
+    <p id="banglist"></p>
+    <script>var bangPrefix="!";var currentBang="g";document.getElementById("listtoggle").innerHTML="List of available bangs ("+Object.keys(bangs).length+")";function doTheBang(event,search){var bang;var searchBar=document.getElementById("search");var key=event.keyCode||event.which;var qlist;if(key===32){qList=search.split(" ");if(qList[0].charAt(0)===bangPrefix){bang=qList[0].substr(1);if(bangs[bang]){currentBang=bang;searchBar.placeholder=bangs[bang]['n'];searchBar.value=search.replace(qList[0],"").trim();event.preventDefault()}}}else if(key===13||event.type==="click"){if(bang===undefined){bang=currentBang}qList=search.split(" ");if(qList[0].charAt(0)===bangPrefix){if(bangs[qList[0].substr(1)]){bang=qList[0].substr(1)}}if("!"+bang===search||search===""){window.location=bangs[bang]["h"].replace("{{qe}}","").replace("{{qp}}","").trim()}else{window.location=bangs[bang]["s"].replace("{{qe}}",encodeURIComponent(search.replace("!"+bang,""))).replace("{{qp}}",search.replace("!"+bang,"").replace(" ","+")).trim()}}}function bangList(){var list=document.getElementById("banglist");var listhtml="";if(list.innerHTML===""){Object.keys(bangs).map(function(objectKey,index){listhtml+="!"+objectKey+" - <a href=\""+bangs[objectKey]["h"]+"\">"+bangs[objectKey]["n"]+"</a><br>"});list.innerHTML=listhtml}else if(list.offsetWidth>0||list.offsetHeight>0){list.style.display="none"}else{list.removeAttribute("style")}}</script>
+  </body>
+</html>
