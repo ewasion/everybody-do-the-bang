@@ -6,7 +6,7 @@
     <style>::placeholder{text-align:center;}</style>
   </head>
   <body>
-    <input type="text" id="search" placeholder="Google" onkeydown="javascript:doTheBang(event,this.value);" onkeyup="javascript:doTheBang(event,this.value);">
+    <input type="text" id="search" placeholder="Google" autocomplete="off" onkeydown="javascript:doTheBang(event,this.value);" onkeyup="javascript:doTheBang(event,this.value);">
     <input type="submit" onclick="javascript:doTheBang(event,document.getElementById(&quot;search&quot;).value);" value="Submit">
     <p id="tip">Try "!ptp" or "!yt everybody do the flop"</p>
     <a href="#" onclick="javascript:bangList();" id="listtoggle">List of available bangs</a>
